@@ -11,6 +11,8 @@
     "iggyvolz/psl-http": "dev-main"
   },
   "autoload": {
-    "iggyvolz\\websocket\\": "src/"
+    "psr-4": {
+      "iggyvolz\\websocket\\": "src/"
+    }
   }
 }
