@@ -19,12 +19,12 @@ final class WebsocketHandler implements RequestHandlerInterface
 
     private static function getAcceptKey(string $websocketKey): string
     {
-        return base64_encode(hash("sha1", "{$websocketKey}258EAFA5-E914-47DA-95CA-C5AB0DC85B11"));
+        return base64_encode(hash("sha1", "{$websocketKey}258EAFA5-E914-47DA-95CA-C5AB0DC85B11", true));
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        if($request->getHeaderLine("Upgrade") !== "websocket" || $request->getHeaderLine("Connection") !== "Upgrade" || $request->getHeaderLine("Sec-Websocket-Version") !== "13") {
+        if($request->getHeaderLine("Upgrade") !== "websocket" || !in_array("Upgrade", explode(", ", $request->getHeaderLine("Connection")))|| $request->getHeaderLine("Sec-Websocket-Version") !== "13") {
             return $this->responseFactory->createResponse(400);
         }
         $websocketKey = $request->getHeaderLine("Sec-Websocket-Key");
