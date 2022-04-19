@@ -1,4 +1,5 @@
 {
+  "name": "iggyvolz/psl-ws",
   "prefer-stable": true,
   "minimum-stability": "dev",
   "license": "0BSD",
