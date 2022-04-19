@@ -69,14 +69,16 @@ final class Frame implements Stringable
         if($frame[1] > 65535) {
             $num = $frame[1];
             $frame[1] = 127;
-            for($i = 9; $i > 1; $i++) {
+            $frame = array_merge($frame, array_fill(2, 8, 0));
+            for($i = 9; $i > 1; $i--) {
                 $frame[$i] = $num % 256;
                 $num >>= 8;
             }
         } elseif($frame[1] > 125) {
             $num = $frame[1];
-            $frame[1] = 127;
-            for($i = 3; $i > 1; $i++) {
+            $frame[1] = 126;
+            $frame = array_merge($frame, array_fill(2, 2, 0));
+            for($i = 3; $i > 1; $i--) {
                 $frame[$i] = $num % 256;
                 $num >>= 8;
             }
