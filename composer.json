@@ -1,0 +1,15 @@
+{
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "license": "0BSD",
+  "require": {
+    "psr/http-server-handler": "^1.0",
+    "php": "8.1.*",
+    "psr/http-factory": "^1.0",
+    "revolt/event-loop": "^0.2.4",
+    "iggyvolz/psl-http": "dev-main"
+  },
+  "autoload": {
+    "iggyvolz\\websocket\\": "src/"
+  }
+}
